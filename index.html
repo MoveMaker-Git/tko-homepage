@@ -32,15 +32,9 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 .ga:hover{background:rgba(184,99,64,0.09);}
 .ga svg{width:28px;height:28px;}
 .ga span{font-size:9.5px;font-family:'Crimson Pro',serif;color:var(--mid);text-align:center;}
-
-/* SETTINGS BTN */
 #sBtn{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--card);border:1px solid var(--border);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:600;box-shadow:0 2px 10px var(--sh);backdrop-filter:blur(12px);font-size:17px;transition:all .2s;}
 #sBtn:hover{background:var(--cream);transform:rotate(35deg);}
-
-/* PAGE */
 .page{max-width:860px;margin:0 auto;padding:52px 24px 80px;position:relative;z-index:1;}
-
-/* HERO */
 .hero{text-align:center;margin-bottom:28px;opacity:0;animation:fadeUp .5s ease .05s forwards;}
 #clock{font-family:'Lora',serif;font-size:clamp(56px,11vw,94px);font-weight:400;color:var(--dk);letter-spacing:-3px;line-height:1;margin-bottom:4px;}
 #dateStr{font-family:'Crimson Pro',serif;font-size:17px;color:var(--mid);font-style:italic;letter-spacing:.5px;margin-bottom:24px;}
@@ -50,8 +44,6 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 .sb svg{color:var(--lt);flex-shrink:0;}
 #si{flex:1;border:none;background:transparent;font-family:'Crimson Pro',serif;font-size:16px;color:var(--dk);outline:none;}
 #si::placeholder{color:var(--lt);}
-
-/* WEATHER */
 .wr{display:flex;justify-content:center;margin-bottom:38px;opacity:0;animation:fadeUp .5s ease .15s forwards;}
 .wc{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 22px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 12px var(--sh);backdrop-filter:blur(10px);}
 #wIco{font-size:28px;}
@@ -59,11 +51,7 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 #wTmp{font-family:'Lora',serif;font-size:22px;font-weight:500;color:var(--dk);line-height:1;}
 #wDsc{font-size:13px;color:var(--mid);font-style:italic;}
 #wCty{font-size:11px;color:var(--lt);}
-
-/* SECTION LABEL */
 .slbl{font-family:'Lora',serif;font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:var(--lt);margin-bottom:13px;}
-
-/* PINNED LINKS */
 .pins-sec{margin-bottom:36px;opacity:0;animation:fadeUp .5s ease .2s forwards;}
 #pinsRow{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;min-height:68px;}
 .pin-wrap{position:relative;display:flex;flex-direction:column;align-items:center;gap:5px;width:62px;}
@@ -74,8 +62,6 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 .pin-wrap:hover .pin-rm{display:flex;}
 .pin-add-btn{width:48px;height:48px;border-radius:13px;border:1.5px dashed var(--border-h);background:var(--card);color:var(--lt);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s,color .15s;backdrop-filter:blur(8px);}
 .pin-add-btn:hover{background:rgba(184,99,64,0.08);border-color:var(--terra-lt);color:var(--terra);}
-
-/* Pin popup */
 #pinPopup{position:fixed;background:var(--cream);border:1px solid var(--border);border-radius:16px;padding:16px;z-index:700;display:none;box-shadow:0 10px 32px rgba(60,35,15,0.18);width:260px;}
 #pinPopup.open{display:block;animation:popIn .18s cubic-bezier(.2,.8,.4,1) both;}
 #pinPopup h4{font-family:'Lora',serif;font-size:13px;color:var(--dk);margin-bottom:12px;}
@@ -86,8 +72,6 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 .pp-save{flex:1;padding:7px;border-radius:8px;border:none;background:var(--terra);color:#fff;font-family:'Crimson Pro',serif;font-size:13px;cursor:pointer;transition:background .15s;}
 .pp-save:hover{background:var(--terra-lt);}
 .pp-cancel{padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:none;color:var(--mid);font-family:'Crimson Pro',serif;font-size:13px;cursor:pointer;}
-
-/* FOLDERS — KEY FIX: align-items:start stops cards in same row stretching to match open card height */
 .fs{opacity:0;animation:fadeUp .5s ease .28s forwards;}
 #fg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start;}
 .fc{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:0 2px 10px var(--sh);backdrop-filter:blur(10px);cursor:pointer;transition:box-shadow .2s,transform .2s,border-color .2s;opacity:0;animation:fadeUp .5s ease forwards;}
@@ -110,14 +94,12 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 .fll{flex:1;}
 .fla{font-size:10px;color:var(--lt);opacity:0;transition:opacity .15s;}
 .fl:hover .fla{opacity:1;}
-
-/* FOOTER */
 .foot{text-align:center;margin-top:40px;font-size:12px;color:var(--lt);font-style:italic;opacity:0;animation:fadeUp .5s ease .65s forwards;}
 
 /* SETTINGS MODAL */
 #sOvl{position:fixed;inset:0;background:rgba(28,16,6,0.55);z-index:800;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px);}
 #sOvl.open{display:flex;animation:fadeIn .2s ease;}
-#sPanel{background:var(--card-solid);border:1px solid var(--border);border-radius:22px;width:100%;max-width:660px;max-height:88vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(28,16,6,0.28);}
+#sPanel{background:var(--card-solid);border:1px solid var(--border);border-radius:22px;width:100%;max-width:680px;max-height:88vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(28,16,6,0.28);}
 .sp-head{display:flex;align-items:center;justify-content:space-between;padding:22px 26px 0;flex-shrink:0;}
 .sp-title{font-family:'Lora',serif;font-size:18px;font-weight:500;color:var(--dk);}
 #sClose{width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--mid);font-size:16px;transition:background .15s;}
@@ -130,6 +112,8 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 .sp-body::-webkit-scrollbar{width:5px;}
 .sp-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
 .ss{display:none;}.ss.on{display:block;}
+
+/* Folder settings */
 .sff{background:rgba(240,230,211,0.45);border:1px solid var(--border);border-radius:13px;margin-bottom:10px;overflow:hidden;}
 .sfh{display:flex;align-items:center;gap:8px;padding:11px 13px;user-select:none;}
 .sfeb{font-size:17px;cursor:pointer;background:none;border:none;padding:2px 5px;border-radius:4px;transition:background .15s;}
@@ -153,18 +137,38 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 .s-alb:hover{background:rgba(184,99,64,0.07);}
 .s-afb{width:100%;padding:10px;border-radius:13px;border:1.5px dashed var(--border-h);background:none;font-family:'Crimson Pro',serif;font-size:14px;color:var(--mid);cursor:pointer;transition:background .15s,border-color .15s;margin-top:4px;}
 .s-afb:hover{background:rgba(184,99,64,0.07);border-color:var(--terra-lt);}
-.bg-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px;}
-.bg-slot{aspect-ratio:16/10;border-radius:10px;border:1.5px dashed var(--border-h);position:relative;overflow:hidden;background:rgba(240,230,211,0.5);cursor:pointer;transition:border-color .15s;}
-.bg-slot:hover{border-color:var(--terra);}
-.bg-slot.has{border-style:solid;border-color:var(--border);}
-.bg-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.bg-si{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;}
-.bg-slot.has .bg-si{background:rgba(30,15,5,0.4);opacity:0;transition:opacity .15s;}
-.bg-slot.has:hover .bg-si{opacity:1;}
-.bg-num{font-size:10px;color:var(--lt);font-family:'Lora',serif;}
-.bg-plus{font-size:22px;color:var(--lt);}
-.bg-act{padding:3px 9px;border-radius:5px;border:1px solid rgba(255,255,255,0.5);background:rgba(255,255,255,0.15);color:#fff;font-size:10px;font-family:'Crimson Pro',serif;cursor:pointer;}
-.bg-note{font-size:12px;color:var(--lt);font-style:italic;text-align:center;}
+
+/* ── BACKGROUND SETTINGS ── */
+.bg-mode-row{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;}
+.bg-mode-btn{flex:1;min-width:120px;padding:10px 8px;border-radius:12px;border:1.5px solid var(--border);background:rgba(255,255,255,0.4);cursor:pointer;font-family:'Crimson Pro',serif;font-size:13px;color:var(--mid);text-align:center;transition:all .18s;line-height:1.3;}
+.bg-mode-btn .bm-icon{font-size:18px;display:block;margin-bottom:4px;}
+.bg-mode-btn .bm-label{font-family:'Lora',serif;font-size:12px;font-weight:500;display:block;color:var(--dk);}
+.bg-mode-btn .bm-sub{font-size:11px;color:var(--lt);display:block;margin-top:1px;}
+.bg-mode-btn:hover{border-color:var(--border-h);background:rgba(255,255,255,0.65);}
+.bg-mode-btn.on{border-color:var(--terra);background:rgba(184,99,64,0.07);box-shadow:0 0 0 3px rgba(184,99,64,0.12);}
+.bg-mode-btn.on .bm-label{color:var(--terra);}
+
+.bg-fixed-hint{font-size:12px;color:var(--terra);font-style:italic;margin-bottom:10px;display:none;}
+.bg-mode-btn.on ~ .bg-fixed-hint{display:block;}
+
+.bg-photos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;margin-bottom:10px;}
+.bg-thumb{aspect-ratio:16/10;border-radius:10px;border:1.5px solid var(--border);position:relative;overflow:hidden;background:rgba(240,230,211,0.5);cursor:pointer;transition:border-color .15s,box-shadow .15s;}
+.bg-thumb:hover{border-color:var(--border-h);}
+.bg-thumb.selected{border-color:var(--terra)!important;box-shadow:0 0 0 3px rgba(184,99,64,0.25);}
+.bg-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.bg-thumb-overlay{position:absolute;inset:0;background:rgba(30,15,5,0.38);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;opacity:0;transition:opacity .15s;}
+.bg-thumb:hover .bg-thumb-overlay{opacity:1;}
+.bg-thumb.selected .bg-thumb-overlay{opacity:1;background:rgba(184,99,64,0.25);}
+.bg-check{font-size:20px;color:#fff;}
+.bg-del-btn{padding:3px 8px;border-radius:5px;border:1px solid rgba(255,255,255,0.5);background:rgba(0,0,0,0.25);color:#fff;font-size:10px;font-family:'Crimson Pro',serif;cursor:pointer;}
+.bg-add-thumb{aspect-ratio:16/10;border-radius:10px;border:1.5px dashed var(--border-h);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;background:rgba(240,230,211,0.3);transition:border-color .15s,background .15s;}
+.bg-add-thumb:hover{border-color:var(--terra-lt);background:rgba(184,99,64,0.05);}
+.bg-add-icon{font-size:22px;color:var(--lt);}
+.bg-add-label{font-size:11px;color:var(--lt);font-family:'Lora',serif;}
+.bg-note{font-size:11.5px;color:var(--lt);font-style:italic;text-align:center;margin-top:6px;}
+.bg-no-photos{text-align:center;padding:24px;font-size:13px;color:var(--lt);font-style:italic;}
+
+/* Prefs */
 .pf{margin-bottom:18px;}
 .pl{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--lt);margin-bottom:6px;font-family:'Lora',serif;}
 .pi{width:100%;padding:9px 13px;border-radius:11px;border:1px solid var(--border);background:rgba(255,255,255,0.6);font-family:'Crimson Pro',serif;font-size:15px;color:var(--dk);outline:none;transition:border-color .2s;}
@@ -258,12 +262,41 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
       <button class="st" data-tab="prefs">Preferences</button>
     </div>
     <div class="sp-body">
+
+      <!-- FOLDERS TAB -->
       <div class="ss on" id="tab-folders"><div id="sfList"></div><button class="s-afb" id="addFolderBtn">+ Add Folder</button></div>
+
+      <!-- BACKGROUNDS TAB -->
       <div class="ss" id="tab-backgrounds">
-        <p style="font-size:13px;color:var(--mid);margin-bottom:14px;font-style:italic;">Upload up to 5 photos — one rotates in each day. Click any empty slot to upload.</p>
-        <div class="bg-grid" id="bgGrid"></div>
-        <p class="bg-note">Photos are stored privately in your browser and rotate daily.</p>
+        <p style="font-size:13px;color:var(--mid);margin-bottom:16px;font-style:italic;">Add as many photos as you like. Choose how they rotate below.</p>
+
+        <!-- Rotation mode selector -->
+        <div class="bg-mode-row" id="bgModeRow">
+          <button class="bg-mode-btn" data-mode="daily">
+            <span class="bm-icon">📅</span>
+            <span class="bm-label">Rotate daily</span>
+            <span class="bm-sub">New photo each day</span>
+          </button>
+          <button class="bg-mode-btn" data-mode="on_open">
+            <span class="bm-icon">🔀</span>
+            <span class="bm-label">Every new open</span>
+            <span class="bm-sub">Changes each visit</span>
+          </button>
+          <button class="bg-mode-btn" data-mode="fixed">
+            <span class="bm-icon">📌</span>
+            <span class="bm-label">Stay on one photo</span>
+            <span class="bm-sub">Click a photo to pick it</span>
+          </button>
+        </div>
+
+        <p id="fixedHint" style="font-size:12px;color:var(--terra);font-style:italic;margin-bottom:10px;display:none;">Click any photo below to pin it permanently.</p>
+
+        <!-- Photos grid -->
+        <div class="bg-photos-grid" id="bgPhotosGrid"></div>
+        <p class="bg-note" id="bgNote"></p>
       </div>
+
+      <!-- PREFS TAB -->
       <div class="ss" id="tab-prefs">
         <div class="pf"><label class="pl" for="weatherInput">Weather Location</label><input class="pi" id="weatherInput" type="text" placeholder="e.g. Croydon, London"></div>
         <button class="psv" id="savePrefs">Save Preferences</button>
@@ -274,10 +307,11 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 </div>
 
 <div id="epicker"></div>
-<input type="file" id="fileInput" accept="image/*" style="display:none">
+<input type="file" id="fileInput" accept="image/*" multiple style="display:none">
 
 <script>
-const K={fo:'tko_folders',pi:'tko_pins',pr:'tko_prefs',bg:'tko_bg_',wc:'tko_wc'};
+// ─── STORAGE ───
+const K={fo:'tko_folders',pi:'tko_pins',pr:'tko_prefs',bk:'tko_bg_photos',bc:'tko_bg_counter',wc:'tko_wc'};
 const PC=['#B86340','#6E917A','#7B6B99','#4878A0','#8B6A46','#5A8B6A','#A05870','#4A7895','#967040','#6B8B50','#8B5040','#507B6B'];
 const EM=['🛠️','🤖','🌐','📦','🛍️','📁','⭐','🏠','💼','📊','🎨','🎬','🎮','📰','✈️','🏋️','🧰','🔗','💡','🎵','🍕','💰','📚','🌿','🔒','🎯','🖥️'];
 const DEF=[
@@ -292,14 +326,14 @@ const uid=()=>'i'+Math.random().toString(36).slice(2,8);
 const esc=s=>{const d=document.createElement('div');d.textContent=s||'';return d.innerHTML;};
 const load=(k,fb)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):fb;}catch{return fb;}};
 const save=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
-const loadStr=k=>localStorage.getItem(k)||null;
-const saveStr=(k,v)=>localStorage.setItem(k,v);
 
 let folders=load(K.fo,null)||JSON.parse(JSON.stringify(DEF));
 let pins=load(K.pi,[]);
-let prefs=load(K.pr,{city:'Croydon, London',lat:51.3762,lon:-0.0982});
+let prefs=load(K.pr,{city:'Croydon, London',lat:51.3762,lon:-0.0982,bgMode:'daily',bgFixed:0});
+if(!prefs.bgMode)prefs.bgMode='daily';
+if(prefs.bgFixed===undefined)prefs.bgFixed=0;
 
-// CLOCK
+// ─── CLOCK ───
 const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const MONS=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const sfx=d=>d===1||d===21||d===31?'st':d===2||d===22?'nd':d===3||d===23?'rd':'th';
@@ -311,16 +345,10 @@ const tick=()=>{
 };
 tick();setInterval(tick,1000);
 
-// WEATHER
+// ─── WEATHER ───
 const WMO={0:['☀️','Clear skies'],1:['🌤','Mainly clear'],2:['⛅️','Partly cloudy'],3:['☁️','Overcast'],45:['🌫','Foggy'],48:['🌫','Icy fog'],51:['🌦','Light drizzle'],53:['🌦','Drizzle'],55:['🌧','Heavy drizzle'],61:['🌧','Light rain'],63:['🌧','Rain'],65:['🌧','Heavy rain'],71:['🌨','Light snow'],73:['❄️','Snow'],75:['❄️','Heavy snow'],80:['🌦','Showers'],81:['🌧','Heavy showers'],82:['⛈','Storm'],95:['⛈','Thunderstorm'],99:['⛈','Severe storm']};
 const wmo=c=>WMO[c]||WMO[Math.floor(c/10)*10]||['🌡','Unknown'];
-const renderW=(d,city)=>{
-  const[ico,desc]=wmo(d.current.weather_code);
-  document.getElementById('wIco').textContent=ico;
-  document.getElementById('wTmp').textContent=Math.round(d.current.temperature_2m)+'°C';
-  document.getElementById('wDsc').textContent=desc;
-  document.getElementById('wCty').textContent=city||'';
-};
+const renderW=(d,city)=>{const[ico,desc]=wmo(d.current.weather_code);document.getElementById('wIco').textContent=ico;document.getElementById('wTmp').textContent=Math.round(d.current.temperature_2m)+'°C';document.getElementById('wDsc').textContent=desc;document.getElementById('wCty').textContent=city||'';};
 const loadWeather=async(lat,lon,city)=>{
   try{
     const cache=load(K.wc,{});
@@ -330,29 +358,41 @@ const loadWeather=async(lat,lon,city)=>{
   }catch{document.getElementById('wDsc').textContent='Weather unavailable';}
 };
 const resolveCity=async str=>{
-  try{
-    const r=await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(str)}&format=json&limit=1`);
-    const d=await r.json();
-    if(d&&d[0])return{lat:parseFloat(d[0].lat),lon:parseFloat(d[0].lon),city:(d[0].display_name||str).split(',').slice(0,2).join(', ')};
-  }catch{}return null;
+  try{const r=await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(str)}&format=json&limit=1`);const d=await r.json();if(d&&d[0])return{lat:parseFloat(d[0].lat),lon:parseFloat(d[0].lon),city:(d[0].display_name||str).split(',').slice(0,2).join(', ')};}catch{}return null;
 };
 loadWeather(prefs.lat,prefs.lon,prefs.city);
 
-// BACKGROUND
-const initBackground=()=>{
-  const bgs=[];
-  for(let i=0;i<5;i++){const b=loadStr(K.bg+i);if(b)bgs.push(b);}
+// ─── BACKGROUND (unlimited, 3 modes) ───
+const getPhotos=()=>load(K.bk,[]);
+const savePhotos=p=>save(K.bk,p);
+
+const applyBackground=photos=>{
   const bg=document.getElementById('bgLayer');
-  if(!bgs.length){bg.style.background='var(--bg)';return;}
-  bg.style.cssText=`position:fixed;inset:0;background:url("${bgs[Math.floor(Date.now()/86400000)%bgs.length]}") center/cover no-repeat;z-index:-1;`;
+  if(!photos||!photos.length){bg.style.cssText='position:fixed;inset:0;background:var(--bg);z-index:-1;';return;}
+  const mode=prefs.bgMode||'daily';
+  let idx=0;
+  if(mode==='daily'){
+    idx=Math.floor(Date.now()/86400000)%photos.length;
+  } else if(mode==='on_open'){
+    // Advance counter each page load, persist so next open shows next photo
+    let ctr=parseInt(localStorage.getItem(K.bc)||'0');
+    ctr=(ctr+1)%photos.length;
+    localStorage.setItem(K.bc,String(ctr));
+    idx=ctr;
+  } else if(mode==='fixed'){
+    idx=Math.min(prefs.bgFixed||0, photos.length-1);
+  }
+  const photo=photos[idx];
+  bg.style.cssText=`position:fixed;inset:0;background:url("${photo}") center/cover no-repeat;z-index:-1;`;
   document.querySelectorAll('.fc,.wc,.sb').forEach(el=>el.style.background='rgba(252,245,234,0.9)');
 };
+
+const initBackground=()=>{applyBackground(getPhotos());};
 initBackground();
 
-// PINNED LINKS
+// ─── PINNED LINKS ───
 const pinColor=url=>{let h=0;const s=(url||'').replace(/^https?:\/\/(www\.)?/,'').split('/')[0];for(let i=0;i<s.length;i++)h=s.charCodeAt(i)+((h<<5)-h);return PC[Math.abs(h)%PC.length];};
 const pinInit=l=>(l||'?').trim().charAt(0).toUpperCase();
-
 const renderPins=()=>{
   const row=document.getElementById('pinsRow');
   row.querySelectorAll('.pin-wrap').forEach(p=>p.remove());
@@ -365,30 +405,14 @@ const renderPins=()=>{
   });
 };
 renderPins();
-
-const pinPopup=document.getElementById('pinPopup');
-const addPinBtn=document.getElementById('addPinBtn');
-addPinBtn.addEventListener('click',e=>{
-  e.stopPropagation();
-  const r=addPinBtn.getBoundingClientRect();
-  pinPopup.style.top=(r.bottom+8)+'px';
-  pinPopup.style.left=Math.max(8,r.left-20)+'px';
-  pinPopup.classList.toggle('open');
-  if(pinPopup.classList.contains('open'))document.getElementById('ppLabel').focus();
-});
-document.getElementById('ppSave').addEventListener('click',()=>{
-  const label=document.getElementById('ppLabel').value.trim();
-  const url=document.getElementById('ppUrl').value.trim();
-  if(!label||!url)return;
-  pins.push({id:uid(),label,url});save(K.pi,pins);renderPins();
-  document.getElementById('ppLabel').value='';document.getElementById('ppUrl').value='';
-  pinPopup.classList.remove('open');
-});
+const pinPopup=document.getElementById('pinPopup'),addPinBtn=document.getElementById('addPinBtn');
+addPinBtn.addEventListener('click',e=>{e.stopPropagation();const r=addPinBtn.getBoundingClientRect();pinPopup.style.top=(r.bottom+8)+'px';pinPopup.style.left=Math.max(8,r.left-20)+'px';pinPopup.classList.toggle('open');if(pinPopup.classList.contains('open'))document.getElementById('ppLabel').focus();});
+document.getElementById('ppSave').addEventListener('click',()=>{const label=document.getElementById('ppLabel').value.trim(),url=document.getElementById('ppUrl').value.trim();if(!label||!url)return;pins.push({id:uid(),label,url});save(K.pi,pins);renderPins();document.getElementById('ppLabel').value='';document.getElementById('ppUrl').value='';pinPopup.classList.remove('open');});
 document.getElementById('ppCancel').addEventListener('click',()=>pinPopup.classList.remove('open'));
 document.getElementById('ppUrl').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('ppSave').click();});
 document.addEventListener('click',e=>{if(!pinPopup.contains(e.target)&&e.target!==addPinBtn)pinPopup.classList.remove('open');});
 
-// FOLDERS
+// ─── FOLDERS ───
 const renderFolders=()=>{
   const grid=document.getElementById('fg');grid.innerHTML='';
   folders.forEach((f,i)=>{
@@ -402,19 +426,21 @@ const renderFolders=()=>{
 };
 renderFolders();
 
-// WAFFLE
+// ─── WAFFLE ───
 const wBtn=document.getElementById('wBtn'),wPop=document.getElementById('wPop');
 wBtn.addEventListener('click',e=>{e.stopPropagation();wPop.classList.toggle('open');});
 document.addEventListener('click',()=>wPop.classList.remove('open'));
 wPop.addEventListener('click',e=>e.stopPropagation());
 
-// SETTINGS
+// ─── SETTINGS ───
 const sOvl=document.getElementById('sOvl');
-document.getElementById('sBtn').addEventListener('click',()=>{sOvl.classList.add('open');renderSFolders();renderBgSlots();document.getElementById('weatherInput').value=prefs.city||'';});
-document.getElementById('sClose').addEventListener('click',()=>{sOvl.classList.remove('open');renderFolders();initBackground();});
-sOvl.addEventListener('click',e=>{if(e.target===sOvl){sOvl.classList.remove('open');renderFolders();initBackground();}});
+document.getElementById('sBtn').addEventListener('click',()=>{sOvl.classList.add('open');renderSFolders();renderBgSettings();document.getElementById('weatherInput').value=prefs.city||'';});
+const closeSettings=()=>{sOvl.classList.remove('open');renderFolders();initBackground();};
+document.getElementById('sClose').addEventListener('click',closeSettings);
+sOvl.addEventListener('click',e=>{if(e.target===sOvl)closeSettings();});
 document.querySelectorAll('.st').forEach(t=>{t.addEventListener('click',()=>{document.querySelectorAll('.st').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.ss').forEach(x=>x.classList.remove('on'));t.classList.add('on');document.getElementById('tab-'+t.dataset.tab).classList.add('on');});});
 
+// Settings: Folders
 const renderSFolders=()=>{
   const list=document.getElementById('sfList');list.innerHTML='';
   folders.forEach(f=>{
@@ -441,7 +467,7 @@ const renderLR=(div,f)=>{
 };
 document.getElementById('addFolderBtn').addEventListener('click',()=>{folders.push({id:uid(),emoji:'📁',name:'New Folder',links:[]});save(K.fo,folders);renderSFolders();document.querySelector('.sp-body').scrollTop=9999;});
 
-// EMOJI
+// Emoji picker
 let activeEBtn=null;
 const epicker=document.getElementById('epicker');
 epicker.innerHTML=EM.map(e=>`<span>${e}</span>`).join('');
@@ -449,38 +475,101 @@ epicker.querySelectorAll('span').forEach(s=>{s.addEventListener('click',()=>{if(
 document.addEventListener('click',()=>{epicker.classList.remove('open');activeEBtn=null;});
 const showEmoji=(btn,fid)=>{const r=btn.getBoundingClientRect();epicker.style.top=(r.bottom+6)+'px';epicker.style.left=Math.max(8,r.left-80)+'px';btn._fid=fid;activeEBtn=btn;epicker.classList.add('open');};
 
-// BACKGROUNDS
-let activeBgSlot=null;
-const fileInput=document.getElementById('fileInput');
-const renderBgSlots=()=>{
-  const grid=document.getElementById('bgGrid');grid.innerHTML='';
-  for(let i=0;i<5;i++){
-    const img=loadStr(K.bg+i);
-    const slot=document.createElement('div');slot.className='bg-slot'+(img?' has':'');
-    if(img){slot.innerHTML=`<img src="${img}" alt=""><div class="bg-si"><span style="color:#fff;font-size:10px;font-family:Lora,serif">Day ${i+1}</span><button class="bg-act">Remove</button></div>`;slot.querySelector('.bg-act').addEventListener('click',e=>{e.stopPropagation();localStorage.removeItem(K.bg+i);renderBgSlots();});}
-    else{slot.innerHTML=`<div class="bg-si"><div class="bg-plus">+</div><div class="bg-num">Photo ${i+1}</div></div>`;}
-    slot.addEventListener('click',()=>{if(img)return;activeBgSlot=i;fileInput.click();});
-    grid.appendChild(slot);
+// ─── BACKGROUND SETTINGS ───
+const renderBgSettings=()=>{
+  const photos=getPhotos();
+  const mode=prefs.bgMode||'daily';
+
+  // Highlight active mode button
+  document.querySelectorAll('.bg-mode-btn').forEach(b=>{
+    b.classList.toggle('on',b.dataset.mode===mode);
+  });
+  document.getElementById('fixedHint').style.display=mode==='fixed'?'block':'none';
+
+  // Render photo grid
+  const grid=document.getElementById('bgPhotosGrid');
+  grid.innerHTML='';
+
+  photos.forEach((photo,idx)=>{
+    const thumb=document.createElement('div');
+    thumb.className='bg-thumb'+(mode==='fixed'&&idx===prefs.bgFixed?' selected':'');
+    thumb.innerHTML=`<img src="${photo}" alt="Photo ${idx+1}">
+      <div class="bg-thumb-overlay">
+        ${mode==='fixed'?`<span class="bg-check">${idx===prefs.bgFixed?'✓':''}</span>`:''}
+        <button class="bg-del-btn" data-idx="${idx}">Remove</button>
+      </div>`;
+
+    // Fixed mode: click to select
+    thumb.addEventListener('click',e=>{
+      if(e.target.classList.contains('bg-del-btn'))return;
+      if(mode==='fixed'){
+        prefs.bgFixed=idx;save(K.pr,prefs);
+        renderBgSettings();
+      }
+    });
+
+    thumb.querySelector('.bg-del-btn').addEventListener('click',e=>{
+      e.stopPropagation();
+      if(!confirm('Remove this photo?'))return;
+      const p=getPhotos();p.splice(idx,1);savePhotos(p);
+      if(prefs.bgFixed>=p.length)prefs.bgFixed=Math.max(0,p.length-1);
+      save(K.pr,prefs);renderBgSettings();
+    });
+    grid.appendChild(thumb);
+  });
+
+  // Add photo button
+  const addBtn=document.createElement('div');
+  addBtn.className='bg-add-thumb';
+  addBtn.innerHTML=`<div class="bg-add-icon">+</div><div class="bg-add-label">Add photos</div>`;
+  addBtn.addEventListener('click',()=>document.getElementById('fileInput').click());
+  grid.appendChild(addBtn);
+
+  // Note
+  const note=document.getElementById('bgNote');
+  if(photos.length===0){
+    note.textContent='No photos yet — click + to add some.';
+  } else {
+    const modeText={daily:'rotating daily',on_open:'changing each visit',fixed:'pinned to one photo'};
+    note.textContent=`${photos.length} photo${photos.length!==1?'s':''} uploaded · ${modeText[mode]||''}`;
   }
 };
-fileInput.addEventListener('change',e=>{
-  const file=e.target.files[0];if(!file||activeBgSlot===null)return;
-  const reader=new FileReader();
-  reader.onload=ev=>{saveStr(K.bg+activeBgSlot,ev.target.result);activeBgSlot=null;fileInput.value='';renderBgSlots();};
-  reader.readAsDataURL(file);
+
+// Mode button clicks
+document.querySelectorAll('.bg-mode-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    prefs.bgMode=b.dataset.mode;save(K.pr,prefs);renderBgSettings();
+  });
 });
 
-// PREFS
+// File upload — supports multiple files
+const fileInput=document.getElementById('fileInput');
+fileInput.addEventListener('change',e=>{
+  const files=Array.from(e.target.files);if(!files.length)return;
+  const photos=getPhotos();
+  let loaded=0;
+  files.forEach(file=>{
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      photos.push(ev.target.result);
+      loaded++;
+      if(loaded===files.length){savePhotos(photos);fileInput.value='';renderBgSettings();}
+    };
+    reader.readAsDataURL(file);
+  });
+});
+
+// ─── PREFERENCES ───
 document.getElementById('savePrefs').addEventListener('click',async()=>{
   const str=document.getElementById('weatherInput').value.trim();if(!str)return;
   const btn=document.getElementById('savePrefs');btn.textContent='Saving…';btn.disabled=true;
   const loc=await resolveCity(str);
-  if(loc){prefs={city:loc.city||str,lat:loc.lat,lon:loc.lon};save(K.pr,prefs);localStorage.removeItem(K.wc);loadWeather(prefs.lat,prefs.lon,prefs.city);btn.textContent='Saved ✓';}
+  if(loc){prefs.city=loc.city||str;prefs.lat=loc.lat;prefs.lon=loc.lon;save(K.pr,prefs);localStorage.removeItem(K.wc);loadWeather(prefs.lat,prefs.lon,prefs.city);btn.textContent='Saved ✓';}
   else btn.textContent='Location not found';
   setTimeout(()=>{btn.textContent='Save Preferences';btn.disabled=false;},2200);
 });
 
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){sOvl.classList.remove('open');wPop.classList.remove('open');pinPopup.classList.remove('open');}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSettings();wPop.classList.remove('open');pinPopup.classList.remove('open');}});
 </script>
 </body>
 </html>
