@@ -51,11 +51,9 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 #wTmp{font-family:'Lora',serif;font-size:22px;font-weight:500;color:var(--dk);line-height:1;}
 #wDsc{font-size:13px;color:var(--mid);font-style:italic;}
 #wCty{font-size:11px;color:var(--lt);}
-.clock-wrap{display:inline-block;background:rgba(252,245,234,0.20);border:1px solid rgba(155,115,75,0.18);border-radius:20px;padding:12px 28px 16px;backdrop-filter:blur(10px);margin-bottom:24px;}
-.slbl{font-family:'Lora',serif;font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:var(--lt);margin-bottom:13px;display:inline-block;background:rgba(252,245,234,0.20);border:1px solid rgba(155,115,75,0.18);border-radius:20px;padding:3px 12px;backdrop-filter:blur(8px);}
+.slbl{font-family:'Lora',serif;font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:var(--lt);margin-bottom:13px;}
 .pins-sec{margin-bottom:36px;opacity:0;animation:fadeUp .5s ease .2s forwards;}
-#pinsRow{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;min-height:68px;background:rgba(252,245,234,0.20);border:1px solid rgba(155,115,75,0.18);border-radius:16px;padding:10px 12px;backdrop-filter:blur(8px);}
-.pin-label{font-size:10px;color:var(--mid);text-align:center;width:62px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-shadow:0 1px 4px rgba(252,245,234,0.8);}
+#pinsRow{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;min-height:68px;}
 .pin-wrap{position:relative;display:flex;flex-direction:column;align-items:center;gap:5px;width:62px;}
 .pin-icon{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-size:19px;font-weight:600;color:#fff;box-shadow:0 2px 8px rgba(60,35,15,0.15);text-decoration:none;transition:transform .15s,box-shadow .15s;}
 .pin-wrap:hover .pin-icon{transform:translateY(-2px);box-shadow:0 5px 14px rgba(60,35,15,0.22);}
@@ -225,10 +223,8 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 
 <main class="page">
   <section class="hero">
-    <div class="clock-wrap">
-      <div id="clock">00:00</div>
-      <div id="dateStr">Loading…</div>
-    </div>
+    <div id="clock">00:00</div>
+    <div id="dateStr">Loading…</div>
     <div class="sw">
       <form class="sb" action="https://www.google.com/search" method="get">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -315,7 +311,7 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 
 <script>
 // ─── STORAGE ───
-const K={fo:'tko_folders',pi:'tko_pins',pr:'tko_prefs',bk:'tko_bg_photos',bc:'tko_bg_counter',wc:'tko_wc'};
+const K={fo:'tko_folders',pi:'tko_pins',pr:'tko_prefs',bc:'tko_bg_counter',wc:'tko_wc'};
 const PC=['#B86340','#6E917A','#7B6B99','#4878A0','#8B6A46','#5A8B6A','#A05870','#4A7895','#967040','#6B8B50','#8B5040','#507B6B'];
 const EM=['🛠️','🤖','🌐','📦','🛍️','📁','⭐','🏠','💼','📊','🎨','🎬','🎮','📰','✈️','🏋️','🧰','🔗','💡','🎵','🍕','💰','📚','🌿','🔒','🎯','🖥️'];
 const DEF=[
@@ -366,7 +362,7 @@ const resolveCity=async str=>{
 };
 loadWeather(prefs.lat,prefs.lon,prefs.city);
 
-// ─── BACKGROUND (unlimited, 3 modes) ───
+// ─── BACKGROUND — IndexedDB storage, canvas compression ───
 const DB_NAME='tko_bg',DB_VER=1,DB_STORE='photos';
 let _db=null;
 const openDB=()=>new Promise((res,rej)=>{
@@ -419,7 +415,6 @@ const applyBackground=photos=>{
   if(mode==='daily'){
     idx=Math.floor(Date.now()/86400000)%photos.length;
   } else if(mode==='on_open'){
-    // Advance counter each page load, persist so next open shows next photo
     let ctr=parseInt(localStorage.getItem(K.bc)||'0');
     ctr=(ctr+1)%photos.length;
     localStorage.setItem(K.bc,String(ctr));
@@ -553,7 +548,7 @@ const renderBgSettings=async()=>{
       }
     });
 
-    thumb.querySelector('.bg-del-btn').addEventListener('click',e=>{
+    thumb.querySelector('.bg-del-btn').addEventListener('click',async e=>{
       e.stopPropagation();
       if(!confirm('Remove this photo?'))return;
       const p=await getPhotos();p.splice(idx,1);await savePhotos(p);
@@ -587,7 +582,7 @@ document.querySelectorAll('.bg-mode-btn').forEach(b=>{
   });
 });
 
-// File upload — supports multiple files
+// File upload — compress then store in IndexedDB
 const fileInput=document.getElementById('fileInput');
 fileInput.addEventListener('change',async e=>{
   const files=Array.from(e.target.files);if(!files.length)return;
