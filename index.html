@@ -7,15 +7,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Crimson+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F0E6D3;--card:rgba(252,245,234,0.82);--card-solid:#FAF3E6;
-  --border:rgba(155,115,75,0.18);--border-h:rgba(155,115,75,0.36);
-  --terra:#B86340;--terra-lt:#D4825A;
-  --dk:#3E2A1A;--mid:#7A5A42;--lt:#B09078;
-  --cream:#FDF7EE;--sh:rgba(60,35,15,0.10);--shh:rgba(60,35,15,0.18);
+  --bg:rgba(240,230,211,0.18);--card:rgba(252,245,234,0.42);--card-solid:rgba(250,243,230,0.52);
+  --border:rgba(155,115,75,0.22);--border-h:rgba(155,115,75,0.42);
+  --terra:#8B3A20;--terra-lt:#B86340;
+  --dk:#2C1A0E;--mid:#6B4A32;--lt:#A08060;
+  --cream:rgba(253,247,238,0.55);--sh:rgba(60,35,15,0.12);--shh:rgba(60,35,15,0.22);
+  --ring:#7A3020;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{min-height:100vh;font-family:'Crimson Pro',Georgia,serif;color:var(--dk);overflow-x:hidden;}
 #bgLayer{position:fixed;inset:0;background:var(--bg);background-size:cover;background-position:center;z-index:-1;}
+#bgLayer::after{content:'';position:absolute;inset:0;background:rgba(20,8,2,0.18);}
 body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;z-index:9000;}
 body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-50%);width:80vw;height:55vh;background:radial-gradient(ellipse,rgba(184,99,64,0.09) 0%,transparent 68%);pointer-events:none;z-index:0;}
 
@@ -36,25 +38,24 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 #sBtn:hover{background:var(--cream);transform:rotate(35deg);}
 .page{max-width:860px;margin:0 auto;padding:52px 24px 80px;position:relative;z-index:1;}
 .hero{text-align:center;margin-bottom:28px;opacity:0;animation:fadeUp .5s ease .05s forwards;}
-#clock{font-family:'Lora',serif;font-size:clamp(56px,11vw,94px);font-weight:400;color:var(--dk);letter-spacing:-3px;line-height:1;margin-bottom:4px;}
-#dateStr{font-family:'Crimson Pro',serif;font-size:17px;color:var(--mid);font-style:italic;letter-spacing:.5px;}
-.clock-bg{display:inline-block;background:rgba(252,245,234,0.22);border:1px solid rgba(155,115,75,0.20);border-radius:18px;padding:10px 24px 12px;margin-bottom:24px;}
+#clock{font-family:'Lora',serif;font-size:clamp(56px,11vw,94px);font-weight:400;color:#FFF5E8;letter-spacing:-3px;line-height:1;margin-bottom:4px;text-shadow:0 2px 18px rgba(20,8,2,0.5),0 1px 4px rgba(20,8,2,0.3);}
+#dateStr{font-family:'Crimson Pro',serif;font-size:17px;color:rgba(255,235,200,0.88);font-style:italic;letter-spacing:.5px;margin-bottom:24px;text-shadow:0 1px 8px rgba(20,8,2,0.4);}
 .sw{max-width:520px;margin:0 auto;}
-.sb{display:flex;align-items:center;background:var(--card);border:1.5px solid var(--border);border-radius:50px;padding:11px 20px;gap:12px;box-shadow:0 4px 18px var(--sh);backdrop-filter:blur(12px);transition:border-color .2s,box-shadow .2s;}
-.sb:focus-within{border-color:var(--terra-lt);box-shadow:0 4px 24px rgba(184,99,64,0.18);}
-.sb svg{color:var(--lt);flex-shrink:0;}
-#si{flex:1;border:none;background:transparent;font-family:'Crimson Pro',serif;font-size:16px;color:var(--dk);outline:none;}
-#si::placeholder{color:var(--lt);}
+.sb{display:flex;align-items:center;background:rgba(252,245,234,0.40);border:1.5px solid rgba(155,115,75,0.30);border-radius:50px;padding:11px 20px;gap:12px;box-shadow:0 4px 18px rgba(20,8,2,0.18);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:border-color .2s,box-shadow .2s;}
+.sb:focus-within{border-color:rgba(184,99,64,0.6);box-shadow:0 4px 24px rgba(184,99,64,0.22);}
+.sb svg{color:rgba(180,140,100,0.8);flex-shrink:0;}
+#si{flex:1;border:none;background:transparent;font-family:'Crimson Pro',serif;font-size:16px;color:#FFF5E8;outline:none;}
+#si::placeholder{color:rgba(220,195,160,0.7);}
 .wr{display:flex;justify-content:center;margin-bottom:38px;opacity:0;animation:fadeUp .5s ease .15s forwards;}
-.wc{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 22px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 12px var(--sh);backdrop-filter:blur(10px);}
+.wc{background:rgba(252,245,234,0.40);border:1px solid rgba(155,115,75,0.26);border-radius:14px;padding:12px 22px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 12px rgba(20,8,2,0.16);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
 #wIco{font-size:28px;}
 .wi{display:flex;flex-direction:column;gap:1px;}
-#wTmp{font-family:'Lora',serif;font-size:22px;font-weight:500;color:var(--dk);line-height:1;}
-#wDsc{font-size:13px;color:var(--mid);font-style:italic;}
-#wCty{font-size:11px;color:var(--lt);}
-.slbl{font-family:'Lora',serif;font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:var(--lt);margin-bottom:13px;display:inline-block;background:rgba(252,245,234,0.22);border:1px solid rgba(155,115,75,0.20);border-radius:20px;padding:2px 12px;}
+#wTmp{font-family:'Lora',serif;font-size:22px;font-weight:500;color:#FFF5E8;line-height:1;text-shadow:0 1px 6px rgba(20,8,2,0.35);}
+#wDsc{font-size:13px;color:rgba(255,225,180,0.85);font-style:italic;}
+#wCty{font-size:11px;color:rgba(220,190,150,0.75);}
+
 .pins-sec{margin-bottom:36px;opacity:0;animation:fadeUp .5s ease .2s forwards;}
-#pinsRow{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;min-height:68px;background:rgba(252,245,234,0.22);border:1px solid rgba(155,115,75,0.20);border-radius:14px;padding:10px 12px;}
+#pinsRow{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;min-height:68px;}
 .pin-wrap{position:relative;display:flex;flex-direction:column;align-items:center;gap:5px;width:62px;}
 .pin-icon{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-size:19px;font-weight:600;color:#fff;box-shadow:0 2px 8px rgba(60,35,15,0.15);text-decoration:none;transition:transform .15s,box-shadow .15s;}
 .pin-wrap:hover .pin-icon{transform:translateY(-2px);box-shadow:0 5px 14px rgba(60,35,15,0.22);}
@@ -75,12 +76,12 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 .pp-cancel{padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:none;color:var(--mid);font-family:'Crimson Pro',serif;font-size:13px;cursor:pointer;}
 .fs{opacity:0;animation:fadeUp .5s ease .28s forwards;}
 #fg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start;}
-.fc{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:0 2px 10px var(--sh);backdrop-filter:blur(10px);cursor:pointer;transition:box-shadow .2s,transform .2s,border-color .2s;opacity:0;animation:fadeUp .5s ease forwards;}
-.fc:hover{box-shadow:0 6px 24px var(--shh);transform:translateY(-2px);border-color:var(--border-h);}
+.fc{background:rgba(252,245,234,0.42);border:1px solid rgba(155,115,75,0.28);border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(20,8,2,0.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);cursor:pointer;transition:box-shadow .2s,transform .2s,border-color .2s,background .2s;opacity:0;animation:fadeUp .5s ease forwards;}
+.fc:hover{box-shadow:0 6px 28px rgba(20,8,2,0.28);transform:translateY(-2px);border-color:rgba(155,115,75,0.46);background:rgba(252,245,234,0.58);}
 .fc:nth-child(1){animation-delay:.32s;}.fc:nth-child(2){animation-delay:.38s;}.fc:nth-child(3){animation-delay:.44s;}.fc:nth-child(4){animation-delay:.50s;}.fc:nth-child(5){animation-delay:.56s;}
 .fh{display:flex;align-items:flex-start;gap:10px;padding:16px 16px 14px;user-select:none;}
 .fe{font-size:20px;flex-shrink:0;margin-top:1px;}
-.fn{font-family:'Lora',serif;font-size:13px;font-weight:500;color:var(--dk);flex:1;line-height:1.45;}
+.fn{font-family:'Lora',serif;font-size:13px;font-weight:500;color:#2C1A0E;flex:1;line-height:1.45;text-shadow:0 1px 2px rgba(255,245,230,0.3);}
 .fct{font-size:10px;color:var(--lt);font-style:italic;flex-shrink:0;margin-top:3px;}
 .fch{color:var(--lt);font-size:11px;transition:transform .28s cubic-bezier(.4,0,.2,1);flex-shrink:0;margin-top:3px;}
 .fc.open .fch{transform:rotate(180deg);}
@@ -183,7 +184,7 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 @keyframes popIn{from{opacity:0;transform:scale(.93) translateY(-8px)}to{opacity:1;transform:scale(1) translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-</style>
+.slbl{font-family:'Lora',serif;font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,245,230,0.9);margin-bottom:13px;text-shadow:0 1px 4px rgba(20,8,2,0.4);}</style>
 </head>
 <body>
 <div id="bgLayer"></div>
@@ -224,14 +225,12 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 
 <main class="page">
   <section class="hero">
-    <div class="clock-bg">
-      <div id="clock">00:00</div>
-      <div id="dateStr">Loading…</div>
-    </div>
+    <div id="clock">00:00</div>
+    <div id="dateStr">Loading…</div>
     <div class="sw">
       <form class="sb" action="https://www.google.com/search" method="get">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input id="si" name="q" type="text" placeholder="Search Google…" autocomplete="off" autofocus>
+        <input id="si" name="q" type="text" placeholder="Search Google…" autocomplete="off">
       </form>
     </div>
   </section>
@@ -314,7 +313,7 @@ body::before{content:'';position:fixed;top:-25vh;left:50%;transform:translateX(-
 
 <script>
 // ─── STORAGE ───
-const K={fo:'tko_folders',pi:'tko_pins',pr:'tko_prefs',bc:'tko_bg_counter',wc:'tko_wc'};
+const K={fo:'tko_folders',pi:'tko_pins',pr:'tko_prefs',bk:'tko_bg_photos',bc:'tko_bg_counter',wc:'tko_wc'};
 const PC=['#B86340','#6E917A','#7B6B99','#4878A0','#8B6A46','#5A8B6A','#A05870','#4A7895','#967040','#6B8B50','#8B5040','#507B6B'];
 const EM=['🛠️','🤖','🌐','📦','🛍️','📁','⭐','🏠','💼','📊','🎨','🎬','🎮','📰','✈️','🏋️','🧰','🔗','💡','🎵','🍕','💰','📚','🌿','🔒','🎯','🖥️'];
 const DEF=[
@@ -365,52 +364,53 @@ const resolveCity=async str=>{
 };
 loadWeather(prefs.lat,prefs.lon,prefs.city);
 
-// ─── BACKGROUND — IndexedDB storage, canvas compression ───
-const DB_NAME='tko_bg',DB_VER=1,DB_STORE='photos';
-let _db=null;
-const openDB=()=>new Promise((res,rej)=>{
-  if(_db){res(_db);return;}
-  const r=indexedDB.open(DB_NAME,DB_VER);
-  r.onupgradeneeded=e=>{e.target.result.createObjectStore(DB_STORE);};
-  r.onsuccess=e=>{_db=e.target.result;res(_db);};
-  r.onerror=e=>rej(e.target.error);
+// ─── BACKGROUND — IndexedDB storage (no size limit) ───
+const IDB={name:'tko_photos_db',ver:1,store:'photos',key:'all'};
+let _idb=null;
+const openIDB=()=>new Promise((res,rej)=>{
+  if(_idb)return res(_idb);
+  const req=indexedDB.open(IDB.name,IDB.ver);
+  req.onupgradeneeded=e=>e.target.result.createObjectStore(IDB.store);
+  req.onsuccess=e=>{_idb=e.target.result;res(_idb);};
+  req.onerror=e=>rej(e.target.error);
 });
 const getPhotos=async()=>{
-  const db=await openDB();
+  const db=await openIDB();
   return new Promise((res,rej)=>{
-    const tx=db.transaction(DB_STORE,'readonly');
-    const req=tx.objectStore(DB_STORE).get('list');
+    const req=db.transaction(IDB.store,'readonly').objectStore(IDB.store).get(IDB.key);
     req.onsuccess=()=>res(req.result||[]);
     req.onerror=e=>rej(e.target.error);
   });
 };
-const savePhotos=async p=>{
-  const db=await openDB();
+const savePhotos=async photos=>{
+  const db=await openIDB();
   return new Promise((res,rej)=>{
-    const tx=db.transaction(DB_STORE,'readwrite');
-    const req=tx.objectStore(DB_STORE).put(p,'list');
+    const req=db.transaction(IDB.store,'readwrite').objectStore(IDB.store).put(photos,IDB.key);
     req.onsuccess=()=>res();
     req.onerror=e=>rej(e.target.error);
   });
 };
-const compressImage=(file,maxW=1920,quality=0.8)=>new Promise((res,rej)=>{
-  const img=new Image();
-  const url=URL.createObjectURL(file);
+
+// Compress & resize before storing — keeps each photo ~150–300 KB
+const compressImg=file=>new Promise(res=>{
+  const img=new Image(),url=URL.createObjectURL(file);
   img.onload=()=>{
     URL.revokeObjectURL(url);
-    const scale=Math.min(1,maxW/img.width);
-    const w=Math.round(img.width*scale);
-    const h=Math.round(img.height*scale);
+    const MAX=1920;
+    let w=img.width,h=img.height;
+    if(w>MAX){h=Math.round(h*MAX/w);w=MAX;}
+    if(h>MAX){w=Math.round(w*MAX/h);h=MAX;}
     const c=document.createElement('canvas');
     c.width=w;c.height=h;
     c.getContext('2d').drawImage(img,0,0,w,h);
-    res(c.toDataURL('image/jpeg',quality));
+    res(c.toDataURL('image/jpeg',0.78));
   };
-  img.onerror=rej;
+  img.onerror=()=>{URL.revokeObjectURL(url);const r=new FileReader();r.onload=ev=>res(ev.target.result);r.readAsDataURL(file);};
   img.src=url;
 });
 
-const applyBackground=photos=>{
+const applyBackground=async()=>{
+  const photos=await getPhotos();
   const bg=document.getElementById('bgLayer');
   if(!photos||!photos.length){bg.style.cssText='position:fixed;inset:0;background:var(--bg);z-index:-1;';return;}
   const mode=prefs.bgMode||'daily';
@@ -423,15 +423,12 @@ const applyBackground=photos=>{
     localStorage.setItem(K.bc,String(ctr));
     idx=ctr;
   } else if(mode==='fixed'){
-    idx=Math.min(prefs.bgFixed||0, photos.length-1);
+    idx=Math.min(prefs.bgFixed||0,photos.length-1);
   }
-  const photo=photos[idx];
-  bg.style.cssText=`position:fixed;inset:0;background:url("${photo}") center/cover no-repeat;z-index:-1;`;
-  document.querySelectorAll('.fc,.wc,.sb').forEach(el=>el.style.background='rgba(252,245,234,0.9)');
+  bg.style.cssText=`position:fixed;inset:0;background:url("${photos[idx]}") center/cover no-repeat;z-index:-1;`;
 };
 
-const initBackground=async()=>{applyBackground(await getPhotos());};
-initBackground();
+(async()=>applyBackground())();
 
 // ─── PINNED LINKS ───
 const pinColor=url=>{let h=0;const s=(url||'').replace(/^https?:\/\/(www\.)?/,'').split('/')[0];for(let i=0;i<s.length;i++)h=s.charCodeAt(i)+((h<<5)-h);return PC[Math.abs(h)%PC.length];};
@@ -523,13 +520,11 @@ const renderBgSettings=async()=>{
   const photos=await getPhotos();
   const mode=prefs.bgMode||'daily';
 
-  // Highlight active mode button
   document.querySelectorAll('.bg-mode-btn').forEach(b=>{
     b.classList.toggle('on',b.dataset.mode===mode);
   });
   document.getElementById('fixedHint').style.display=mode==='fixed'?'block':'none';
 
-  // Render photo grid
   const grid=document.getElementById('bgPhotosGrid');
   grid.innerHTML='';
 
@@ -542,13 +537,9 @@ const renderBgSettings=async()=>{
         <button class="bg-del-btn" data-idx="${idx}">Remove</button>
       </div>`;
 
-    // Fixed mode: click to select
     thumb.addEventListener('click',e=>{
       if(e.target.classList.contains('bg-del-btn'))return;
-      if(mode==='fixed'){
-        prefs.bgFixed=idx;save(K.pr,prefs);
-        renderBgSettings();
-      }
+      if(mode==='fixed'){prefs.bgFixed=idx;save(K.pr,prefs);renderBgSettings();}
     });
 
     thumb.querySelector('.bg-del-btn').addEventListener('click',async e=>{
@@ -561,14 +552,12 @@ const renderBgSettings=async()=>{
     grid.appendChild(thumb);
   });
 
-  // Add photo button
   const addBtn=document.createElement('div');
   addBtn.className='bg-add-thumb';
   addBtn.innerHTML=`<div class="bg-add-icon">+</div><div class="bg-add-label">Add photos</div>`;
   addBtn.addEventListener('click',()=>document.getElementById('fileInput').click());
   grid.appendChild(addBtn);
 
-  // Note
   const note=document.getElementById('bgNote');
   if(photos.length===0){
     note.textContent='No photos yet — click + to add some.';
@@ -585,15 +574,15 @@ document.querySelectorAll('.bg-mode-btn').forEach(b=>{
   });
 });
 
-// File upload — compress then store in IndexedDB
+// File upload — compresses each image then stores in IndexedDB
 const fileInput=document.getElementById('fileInput');
 fileInput.addEventListener('change',async e=>{
   const files=Array.from(e.target.files);if(!files.length)return;
+  const note=document.getElementById('bgNote');
+  note.textContent=`Compressing ${files.length} photo${files.length!==1?'s':''}…`;
   const photos=await getPhotos();
-  for(const file of files){
-    const dataUrl=await compressImage(file);
-    photos.push(dataUrl);
-  }
+  const compressed=await Promise.all(files.map(f=>compressImg(f)));
+  compressed.forEach(d=>photos.push(d));
   await savePhotos(photos);
   fileInput.value='';
   renderBgSettings();
