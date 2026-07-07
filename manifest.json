@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "TKO Custom Home",
+  "version": "1.0",
+  "description": "Opens the TKO Homepage automatically.",
+  "permissions": ["tabs"],
+  "action": {
+    "default_popup": "TKO_Homepage.html"
+  },
+  "chrome_url_overrides": {
+    "newtab": "TKO_Homepage.html"
+  }
+}

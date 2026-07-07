@@ -430,6 +430,22 @@ const applyBackground=async()=>{
 
 (async()=>applyBackground())();
 
+// ─── LOCAL FILE LINKS ───
+// Extension pages can't navigate to file:// via a normal <a> click, so turn plain
+// paths into file:// URLs and route those clicks through chrome.tabs instead.
+const normUrl=u=>{u=(u||'').trim();if(u.startsWith('/'))return 'file://'+encodeURI(u);if(/^file:/i.test(u)){try{return encodeURI(decodeURI(u));}catch{return u;}}return u;};
+document.addEventListener('click',e=>{
+  const a=e.target.closest&&e.target.closest('a[href^="file:"]');
+  if(!a)return;
+  e.preventDefault();e.stopPropagation();
+  if(typeof chrome!=='undefined'&&chrome.tabs&&chrome.tabs.update){
+    const open=e.metaKey||e.ctrlKey?chrome.tabs.create({url:a.href}):chrome.tabs.update({url:a.href});
+    Promise.resolve(open).catch(()=>alert('Chrome blocked this local file link.\n\nGo to chrome://extensions → TKO Custom Home → enable "Allow access to file URLs", then try again.'));
+  }else{
+    location.href=a.href;
+  }
+},true);
+
 // ─── PINNED LINKS ───
 const pinColor=url=>{let h=0;const s=(url||'').replace(/^https?:\/\/(www\.)?/,'').split('/')[0];for(let i=0;i<s.length;i++)h=s.charCodeAt(i)+((h<<5)-h);return PC[Math.abs(h)%PC.length];};
 const pinInit=l=>(l||'?').trim().charAt(0).toUpperCase();
@@ -439,7 +455,7 @@ const renderPins=()=>{
   const addBtn=document.getElementById('addPinBtn');
   pins.forEach(p=>{
     const wrap=document.createElement('div');wrap.className='pin-wrap';
-    wrap.innerHTML=`<a class="pin-icon" href="${esc(p.url)}" title="${esc(p.label)}" style="background:${pinColor(p.url)}">${pinInit(p.label)}</a><span class="pin-label">${esc(p.label)}</span><button class="pin-rm" data-id="${p.id}">✕</button>`;
+    wrap.innerHTML=`<a class="pin-icon" href="${esc(normUrl(p.url))}" title="${esc(p.label)}" style="background:${pinColor(p.url)}">${pinInit(p.label)}</a><span class="pin-label">${esc(p.label)}</span><button class="pin-rm" data-id="${p.id}">✕</button>`;
     wrap.querySelector('.pin-rm').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();pins=pins.filter(x=>x.id!==p.id);save(K.pi,pins);renderPins();});
     row.insertBefore(wrap,addBtn);
   });
@@ -458,7 +474,7 @@ const renderFolders=()=>{
   folders.forEach((f,i)=>{
     const card=document.createElement('div');card.className='fc';card.dataset.id=f.id;card.style.animationDelay=(0.32+i*0.06)+'s';
     const n=f.links.length;
-    card.innerHTML=`<div class="fh"><span class="fe">${f.emoji}</span><span class="fn">${esc(f.name)}</span><span class="fct">${n} link${n!==1?'s':''}</span><span class="fch">▼</span></div><div class="flw"><div class="fdiv"></div>${f.links.map(l=>`<a class="fl" href="${esc(l.url)}"><span class="fdot"></span><span class="fll">${esc(l.label)}</span><span class="fla">↗</span></a>`).join('')}</div>`;
+    card.innerHTML=`<div class="fh"><span class="fe">${f.emoji}</span><span class="fn">${esc(f.name)}</span><span class="fct">${n} link${n!==1?'s':''}</span><span class="fch">▼</span></div><div class="flw"><div class="fdiv"></div>${f.links.map(l=>`<a class="fl" href="${esc(normUrl(l.url))}"><span class="fdot"></span><span class="fll">${esc(l.label)}</span><span class="fla">↗</span></a>`).join('')}</div>`;
     card.querySelector('.fh').addEventListener('click',()=>{const o=card.classList.contains('open');document.querySelectorAll('.fc.open').forEach(c=>c.classList.remove('open'));if(!o)card.classList.add('open');});
     card.querySelectorAll('.fl').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
     grid.appendChild(card);
